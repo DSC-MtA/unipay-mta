@@ -10,4 +10,4 @@ steps:
   # Build
   - name: 'gcr.io/$PROJECT_ID/flutter'
     entrypoint: '/bin/bash'
-    args: ['build.sh']
+    args: ['gcp/test/build.sh']
