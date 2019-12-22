@@ -1,6 +1,9 @@
 # This installs flutter dependencies, tests it, and attempts to build
 # the application for web. It will not deploy the application.
 steps:
+  # Doctor
+  - name: 'gcr.io/$PROJECT_ID/flutter'
+    args: ['doctor', '-v']
   # Install
   - name: 'gcr.io/$PROJECT_ID/flutter'
     args: ['pub', 'get']
