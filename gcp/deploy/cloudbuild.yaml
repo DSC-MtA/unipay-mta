@@ -1,0 +1,15 @@
+# This installs flutter dependencies, tests it, builds it for web,
+# and deploys it with firebase.
+steps:
+  # Install
+  - name: 'gcr.io/$PROJECT_ID/flutter'
+    args: ['package', 'upgrade']
+  # Test
+  - name: 'gcr.io/$PROJECT_ID/flutter'
+    args: ['test']
+  # Build
+  - name: 'gcr.io/$PROJECT_ID/flutter'
+    args: ['build', 'web']
+  # Deploy
+  - name: 'gcr.io/$PROJECT_ID/firebase'
+    args: ['deploy']

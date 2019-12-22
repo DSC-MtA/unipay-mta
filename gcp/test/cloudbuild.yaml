@@ -1,0 +1,12 @@
+# This installs flutter dependencies, tests it, and attempts to build
+# the application for web. It will not deploy the application.
+steps:
+  # Install
+  - name: 'gcr.io/$PROJECT_ID/flutter'
+    args: ['package', 'upgrade']
+  # Test
+  - name: 'gcr.io/$PROJECT_ID/flutter'
+    args: ['test']
+  # Build
+  - name: 'gcr.io/$PROJECT_ID/flutter'
+    args: ['build', 'web']

@@ -1,3 +1,0 @@
-steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f', 'gcp/Dockerfile-Test', '.']

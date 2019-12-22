@@ -1,5 +1,0 @@
-steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f', 'gcp/Dockerfile-Deploy', '--build-arg', 'FIREBASE_DEPLOY_KEY=$_FIREBASE_DEPLOY_KEY', '.']
-substitutions:
-  _FIREBASE_DEPLOY_KEY: unused
