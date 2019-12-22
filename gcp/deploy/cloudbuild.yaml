@@ -9,7 +9,8 @@ steps:
     args: ['test']
   # Build
   - name: 'gcr.io/$PROJECT_ID/flutter'
-    args: ['build', 'web']
+    entrypoint: '/bin/bash'
+    args: ['gcp/deploy/build.sh']
   # Deploy
   - name: 'gcr.io/$PROJECT_ID/firebase'
     args: ['deploy']
