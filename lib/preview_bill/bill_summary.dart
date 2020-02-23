@@ -27,54 +27,57 @@ class BillSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: <Widget>[
-            Column(
-              children: billItems.map((item) {
-                return buildRow(
-                  left: Text(item.name),
-                  right: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text('\$'),
-                      Container(
-                        width: 50,
-                        alignment: Alignment.centerRight,
-                        child: Text('${formatMoney(item.cost)}'),
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
-            ),
-            Divider(),
-            buildRow(
-              left: Text(
-                'Total',
-                style: TextStyle(fontWeight: FontWeight.bold),
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Card(
+        child: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: <Widget>[
+              Column(
+                children: billItems.map((item) {
+                  return buildRow(
+                    left: Text(item.name),
+                    right: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Text('\$'),
+                        Container(
+                          width: 50,
+                          alignment: Alignment.centerRight,
+                          child: Text('${formatMoney(item.cost)}'),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
               ),
-              right: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    '\$',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    width: 50,
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '${formatMoney(sumUpBill(billItems))}',
+              Divider(),
+              buildRow(
+                left: Text(
+                  'Subtotal',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                right: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      '\$',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                  ),
-                ],
+                    Container(
+                      width: 50,
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '${formatMoney(sumUpBill(billItems))}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
