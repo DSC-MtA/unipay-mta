@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'bill_row.dart';
 import '../util/money_formatter.dart';
 
+/// Widget displaying the total amount due for a bill.
 class TotalWidget extends StatelessWidget {
   TotalWidget({@required this.total});
+
+  /// The total amount due in cents (e.g. 150 means $1.50).
   final int total;
 
   @override
@@ -12,36 +16,11 @@ class TotalWidget extends StatelessWidget {
       child: Card(
         child: Container(
           padding: EdgeInsets.all(20),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                flex: 7,
-                child: Text(
-                  'Total',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      '\$',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Container(
-                      width: 50,
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        '${formatMoney(total)}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          // We just have one row holding the total.
+          child: BillRow(
+              billItem: 'Total',
+              billCost: '${formatMoney(total)}',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
       ),

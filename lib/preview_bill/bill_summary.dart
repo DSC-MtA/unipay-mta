@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart';
+import 'bill_row.dart';
 import '../util/money_formatter.dart';
 import '../util/bill_items.dart';
 
+/// Widget with the summary of items on the bill.
 class BillSummary extends StatelessWidget {
   const BillSummary({@required this.billItems});
 
+  /// List of items on the bill.
   final List<BillItem> billItems;
-
-  Widget buildRow({@required Widget left, @required Widget right}) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            flex: 7,
-            child: left,
-          ),
-          Expanded(
-            flex: 3,
-            child: right,
-          ),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,46 +20,21 @@ class BillSummary extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Column(
+                // This creates a list of widgets and dumps them into the
+                // column. We use the list.map() function to create a row widget
+                // for every list item.
                 children: billItems.map((item) {
-                  return buildRow(
-                    left: Text(item.name),
-                    right: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Text('\$'),
-                        Container(
-                          width: 50,
-                          alignment: Alignment.centerRight,
-                          child: Text('${formatMoney(item.cost)}'),
-                        ),
-                      ],
-                    ),
+                  return BillRow(
+                    billItem: item.name,
+                    billCost: '${formatMoney(item.cost)}',
                   );
-                }).toList(),
+                }).toList(), // toList() required due to lazy loading
               ),
               Divider(),
-              buildRow(
-                left: Text(
-                  'Subtotal',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                right: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      '\$',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Container(
-                      width: 50,
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        '${formatMoney(sumUpBill(billItems))}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
+              BillRow(
+                billItem: 'Subtotal',
+                billCost: '${formatMoney(sumUpBill(billItems))}',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
