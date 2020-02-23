@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'bill_summary.dart';
+import 'tip_selector.dart';
 import '../util/bill_items.dart';
 
 const PAGE_NAME = 'Preview Bill';
@@ -24,6 +25,7 @@ class PreviewBillPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         children: <Widget>[
           BillSummary(billItems: TEMP_ITEMS),
+          TipSelector(),
         ],
       ),
     );
