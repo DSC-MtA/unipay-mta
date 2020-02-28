@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'personSelector.dart';
+import 'addNewUser.dart';
 
 void main() => runApp(MyApp());
 
