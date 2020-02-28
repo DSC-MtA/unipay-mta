@@ -13,13 +13,13 @@ class AddUserForm extends StatefulWidget
 
 class AddUserFormState extends State<AddUserForm>
 {
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context)
   {
     return Form(
-      key: _formkey,
+      key: _formKey,
       child: Column(
         children: <Widget>[
           TextFormField(
@@ -27,6 +27,15 @@ class AddUserFormState extends State<AddUserForm>
               if(value.isEmpty)
               {
                 return 'Please enter first name';
+              }
+              return null;
+            },
+          ),
+          TextFormField(
+            validator: (value) {
+              if(value.isEmpty)
+              {
+                return 'Please enter last name';
               }
               return null;
             },
