@@ -23,6 +23,9 @@ class AddUserFormState extends State<AddUserForm>
       child: Column(
         children: <Widget>[
           TextFormField(
+            decoration: const InputDecoration(
+              hintText: "First name",
+            ),
             validator: (value) {
               if(value.isEmpty)
               {
@@ -32,6 +35,9 @@ class AddUserFormState extends State<AddUserForm>
             },
           ),
           TextFormField(
+            decoration: const InputDecoration(
+              hintText: "Last name",
+            ),
             validator: (value) {
               if(value.isEmpty)
               {
