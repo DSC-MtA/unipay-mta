@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'personSelector.dart';
 import 'addNewUser.dart';
+import 'preview_bill/preview_bill_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -100,6 +101,13 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PreviewBillPage()));
+              },
+              child: const Text('Preview Bill'),
+            )
           ],
         ),
       ),
