@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'personSelector.dart';
-import 'addNewUser.dart';
+import 'person_selector/addPersonButton.dart';
+import 'person_selector/addNewUser.dart';
 import 'preview_bill/preview_bill_page.dart';
 
 void main() => runApp(MyApp());
